@@ -25,12 +25,12 @@ public class NossoVetor{
   // Metodo do 2° exercicio
   public int[] invertePilha(int[] pilha){
     int aux1, aux2;
-
-    for (int i = 0; i < pilha.length; i+=2) {
-      aux1 = pilha[pilha.length - i - 1];
-      aux2 = pilha[i];
-      pilha[pilha.length - i - 1] = aux2;
-      pilha[i] = aux1;
+    System.out.println(pilha.length);
+    for (int i = 0, v = 0; i < pilha.length; i+=2, v++) {
+      aux1 = pilha[pilha.length - v - 1];
+      aux2 = pilha[v];
+      pilha[pilha.length - v - 1] = aux2;
+      pilha[v] = aux1;
     }
 
     return pilha;

@@ -6,10 +6,10 @@ public class TestePilha {
     // vet.removeElemento(2);
 
     // Segundo exercicio
-    // int[] pilhaTeste = {1,2,3,4};
-    // NossoVetor vet = new NossoVetor(pilhaTeste);
-    // vet.invertePilha(pilhaTeste);
+    int[] pilhaTeste = {1,2,3,4,5};
+    NossoVetor vet = new NossoVetor(pilhaTeste);
+    vet.invertePilha(pilhaTeste);
 
-    // System.out.println(vet);
+    System.out.println(vet);
   }
 }
