@@ -12,7 +12,7 @@ public class NossoVetor{
     this.ocupacao = vetor.length;
   }
 
-  // Metodo do 1° exercicio
+  ///////////////////////////// INICIO Metodo do 1° exercicio
   public int removeElemento(int qnt){
     int aux = ocupacao;
     for(int i = 1; i <= qnt; i++){
@@ -21,8 +21,9 @@ public class NossoVetor{
 
     return aux;
   }
+  ///////////////////////////// FIM Metodo do 1° exercicio
 
-  // Metodo do 2° exercicio
+  ///////////////////////////// INICIO Metodo do 2° exercicio
   public int[] invertePilha(int[] pilha){
     int aux1, aux2;
     System.out.println(pilha.length);
@@ -35,9 +36,52 @@ public class NossoVetor{
 
     return pilha;
   }
+  ///////////////////////////// FIM Metodo do 2° exercicio
+
+  ///////////////////////////// INICIO Metodo do 4° exercicio
+  public int[] agrupaPilha(int[] pilha1, int[] pilha2){
+    int ocupacao1 = pilha1.length -1;
+    int ocupacao2 = pilha2.length -1;
+    int aux1 = 0;
+    int aux2 = 0;
+    this.ocupacao = 0;
+
+    while(ocupacao1+ocupacao2 >= -1){
+      if(ocupacao1 >= 0){
+        aux1 = removeElemento(pilha1, ocupacao1);
+      }else{
+        aux1 = removeElemento(pilha2, ocupacao2);
+      } 
+      
+      if(ocupacao2 >= 0){
+        aux2 = removeElemento(pilha2, ocupacao2);
+      }else{
+        aux2 = removeElemento(pilha1, ocupacao1);
+      } 
+
+      if(aux1 <= aux2){
+        addElemento(aux1);
+        ocupacao1--;
+      }else{
+        addElemento(aux2);
+        ocupacao2--;
+      }
+    }
+
+    return vetor;
+  }
+
+  public int removeElemento(int[] vetor, int index){
+    return vetor[index];
+  }
+
+  public void addElemento(int valor){
+    this.vetor[ocupacao++] = valor;
+  }
+  ///////////////////////////// FIM Metodo do 4° exercicio
 
 
-
+  
   @Override
     public String toString() {
         String s = "ocupacao = " + ocupacao + "\n";
