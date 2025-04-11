@@ -81,6 +81,21 @@ public class NossoVetor{
   ///////////////////////////// FIM Metodo do 4° exercicio
 
 
+  ///////////////////////////// INICIO Exercico 7
+  /// int[] p1 = {1,2,3,4}
+  /// int[] p2 = {}
+  /// int[] p3 = {}
+  /// int temp = p1.pop();        ||        p1 = [1, 2, 3]; temp = 4
+  /// p2.push(temp);              ||        p2 = [4];
+  /// p3.push(p1.pop());          ||        p1 = [1, 2]; p3 = [3]
+  /// p2.push(p1.pop());          ||        p1 = [1]; p2 = [4, 2]
+  /// temp = p1.pop();            ||        p1 = []; temp = 1;
+  /// p3.push(temp);              ||        p3 = [3, 1]
+  /// p1.push(p2.pop());          ||        p2 = [4]; p1 = [2]
+  /// p3.push(p2.pop());          ||        p2 = []; p3 = [3, 1, 4]
+  /// p3.push(p1.pop());          ||        p1 = []; p3 = [3, 1, 4, 2]
+  ///////////////////////////// FIM Exercico 7
+
   
   @Override
     public String toString() {
