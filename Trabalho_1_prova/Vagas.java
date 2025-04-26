@@ -1,6 +1,7 @@
 public class Vagas {
     private String[] vagas;
     private int ocupacao;
+    private int contaManobras = 0;
 
     public Vagas(){
         this.vagas = new String[10];
@@ -9,7 +10,7 @@ public class Vagas {
 
     public void setVagas(String placa){
         if(isFull()) {
-            System.out.println("Não existe vagas para esse carro");
+            System.out.println("Não existe vaga para esse carro");
         }
         else{
             this.vagas[this.ocupacao++] = placa;
@@ -29,7 +30,7 @@ public class Vagas {
     public String toString(){
         String s = "ocupacao = " + ocupacao + "\n";
         for (int i = 0; i < ocupacao; i++)
-            s += vagas[i] + " ";
+            s += "placa do carro na vaga " + (i+1) + ": " + vagas[i] + "\n";
         return s + "\n";
     }
 }
