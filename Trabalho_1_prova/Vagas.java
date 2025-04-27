@@ -21,8 +21,12 @@ public class Vagas {
             System.out.println("Não existe vaga para esse carro");
         }
         else{
-            this.vagas[this.ocupacao++] = placa;
-            System.out.println("Carro adicionado");
+            if(encontraPlaca(placa) != -1){
+                System.out.println("O carro já está estacionado");
+            }else{
+                this.vagas[this.ocupacao++] = placa;
+                System.out.println("Carro adicionado");
+            }
         }
     }
 
