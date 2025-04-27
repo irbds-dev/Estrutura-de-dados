@@ -9,7 +9,7 @@ public class Vagas {
     }
 
     public void setVagas(String placa){
-        if(isFull()) {
+        if(estaCheio()) {
             System.out.println("Não existe vaga para esse carro");
         }
         else{
@@ -18,12 +18,27 @@ public class Vagas {
         }
     }
 
-    public static void getVagas(){
-        
+    public void removeCarro(String placa){
+        int numVaga = encontraPlaca(placa);
+        if(numVaga == -1){
+            System.out.println("Seu carro está estacionado em outro lugar, senhor");
+        }else {
+            System.out.println("NUMERO DA VAGA QUE O CARRO TA" + numVaga);
+            System.out.println("#######Codigo para remover o carro aqui");
+        }
     }
 
-    public boolean isFull(){
+    public boolean estaCheio(){
         return this.ocupacao == this.vagas.length;
+    }
+
+    public int encontraPlaca(String placa){
+        for(int qualVaga = ocupacao; qualVaga >= 0; qualVaga--){
+            if(placa == vagas[qualVaga]){
+                return qualVaga;
+            }
+        }
+        return -1;
     }
 
     @Override
