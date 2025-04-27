@@ -23,8 +23,8 @@ public class Vagas {
         if(numVaga == -1){
             System.out.println("Seu carro está estacionado em outro lugar, senhor");
         }else {
-            System.out.println("NUMERO DA VAGA QUE O CARRO TA" + numVaga);
-            System.out.println("#######Codigo para remover o carro aqui");
+            System.out.println("NUMERO DA VAGA QUE O CARRO ESTÁ: " + numVaga);
+            System.out.println("\n#######Codigo para remover o carro aqui");
         }
     }
 
@@ -34,7 +34,7 @@ public class Vagas {
 
     public int encontraPlaca(String placa){
         for(int qualVaga = ocupacao; qualVaga >= 0; qualVaga--){
-            if(placa == vagas[qualVaga]){
+            if(placa.equals(vagas[qualVaga])){
                 return qualVaga;
             }
         }
@@ -45,7 +45,7 @@ public class Vagas {
     public String toString(){
         String s = "ocupacao = " + ocupacao + "\n";
         for (int i = 0; i < ocupacao; i++)
-            s += "placa do carro na vaga " + (i+1) + ": " + vagas[i] + "\n";
+            s += "placa do carro na vaga " + (i) + ": " + vagas[i] + "\n";
         return s + "\n";
     }
 }
