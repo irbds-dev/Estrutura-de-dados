@@ -7,9 +7,9 @@ public class Bashemin {
         int escolhaUser = 0;
         String placa;
 
-        while(escolhaUser != 3){
+        while(escolhaUser != 4){
             System.out.println("Informe a movimentação que deseja efetuar:");
-            System.out.print("0 - Saida de carro\n1 - Entrada de carro\n3 - Encerrar programa\n");
+            System.out.print("0 - Saida de carro\n1 - Entrada de carro\n3 - Visualizar vagas\n4 - Encerrar programa\n");
             escolhaUser = sc.nextInt();
 
             if(escolhaUser == 0){
@@ -20,8 +20,9 @@ public class Bashemin {
                 System.out.println("Informe a placa do carro a ser inserido");
                 placa = sc.next();
                 vagas.setVagas(placa);
-                System.out.println(vagas);
             }else if(escolhaUser == 3){
+                System.out.println(vagas);
+            }else if(escolhaUser == 4){
                 System.out.println("Encerrando sistema.");
             }else System.out.println("Informe uma opção valida");
         }
