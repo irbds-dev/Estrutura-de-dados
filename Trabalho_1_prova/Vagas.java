@@ -26,25 +26,32 @@ public class Vagas {
         }
     }
 
+    // recebe a solicitação para remover o carro e guia o fluxo
     public void removeCarro(String placa){
         int numVaga = encontraPlaca(placa);
         if(numVaga == -1){
             System.out.println("Seu carro está estacionado em outro lugar, senhor");
         }else {
             System.out.println("NUMERO DA VAGA QUE O CARRO ESTÁ: " + numVaga);
-            int contaManobras = 0;
-            Vagas auxVagas = new Vagas();
-            for(int i = this.ocupacao-1; i > numVaga; i--){
-                auxVagas.setVagas(vagasPop());
-                contaManobras++;
-            }
-            vagasPop();
-            System.out.println("Numero de manobras realizadas: " + contaManobras);
+            Vagas auxVagas = manobraCarro(numVaga);
             estacionaRemovidos(auxVagas);
         }
     }
 
-    // retorna carros removidos na manobra
+    // responsavel por manobrar os carros e remover o solicitado
+    public Vagas manobraCarro(int numVaga){
+        int contaManobras = 0;
+        Vagas auxVagas = new Vagas();
+        for(int i = this.ocupacao-1; i > numVaga; i--){
+            auxVagas.setVagas(vagasPop());
+            contaManobras++;
+        }
+        vagasPop();
+        System.out.println("Numero de manobras realizadas: " + contaManobras);
+        return auxVagas;
+    }
+
+    // retorna carros removidos na manobra para o estacionamento
     public void estacionaRemovidos(Vagas auxVagas){
         for(int i = auxVagas.getOcupacao()-1; i >= 0; i--){
             setVagas(auxVagas.vagasPop());
@@ -61,7 +68,7 @@ public class Vagas {
         return this.ocupacao == this.vagas.length;
     }
 
-    // verifica se o item a ser removido se encontra na pilha
+    // verifica se o item a ser removido se encontra na pilha, retorna sua posição 
     public int encontraPlaca(String placa){
         for(int qualVaga = ocupacao-1; qualVaga >= 0; qualVaga--){
             if(placa.equals(vagas[qualVaga])){
