@@ -1,6 +1,7 @@
 public class Vagas {
     private String[] vagas;
     private int ocupacao;
+    private int contaManobras = 0;
 
     public Vagas(){
         this.vagas = new String[10];
@@ -22,10 +23,10 @@ public class Vagas {
         }
         else{
             if(encontraPlaca(placa) != -1){
-                System.out.println("O carro já está estacionado");
+                System.out.println("\n\n### O carro já está estacionado ###\n\n");
             }else{
                 this.vagas[this.ocupacao++] = placa;
-                System.out.println("Carro adicionado");
+                System.out.println("\n\n### Carro de placa: " + placa + " estacionado na vaga: " + (ocupacao-1) + " ###\n\n");
             }
         }
     }
@@ -38,32 +39,34 @@ public class Vagas {
         }else {
             System.out.println("NUMERO DA VAGA QUE O CARRO ESTÁ: " + numVaga);
             Vagas auxVagas = manobraCarro(numVaga);
-            estacionaRemovidos(auxVagas);
+            estacionaRemovidos(auxVagas, placa);
         }
     }
 
     // responsavel por manobrar os carros e remover o solicitado
     public Vagas manobraCarro(int numVaga){
-        int contaManobras = 0;
+        
         Vagas auxVagas = new Vagas();
         for(int i = this.ocupacao-1; i > numVaga; i--){
             auxVagas.setVagas(vagasPop());
-            contaManobras++;
         }
         vagasPop();
-        System.out.println("Numero de manobras realizadas: " + contaManobras);
         return auxVagas;
     }
 
     // retorna carros removidos na manobra para o estacionamento
-    public void estacionaRemovidos(Vagas auxVagas){
+    public void estacionaRemovidos(Vagas auxVagas, String placa){
         for(int i = auxVagas.getOcupacao()-1; i >= 0; i--){
             setVagas(auxVagas.vagasPop());
+            contaManobras++;
         }
+        System.out.println("Carro placa: " + placa + " saiu com " + contaManobras + " manobra(s) realizada(s)");
+        contaManobras = 0;
     }
 
     // remove itens da pilha
     public String vagasPop(){
+        contaManobras++;
         return vagas[--this.ocupacao];
     }
 
@@ -85,9 +88,9 @@ public class Vagas {
     // sobrescrita do toString
     @Override
     public String toString(){
-        String s = "\nNumero de vagas ocupadas = " + ocupacao + "\n";
+        String s = "\nNumero de vagas ocupadas = " + ocupacao + "\n\n";
         for (int i = 0; i < ocupacao; i++)
-            s += "placa do carro na vaga " + (i) + ": " + vagas[i] + "\n";
+            s += "### placa do carro na vaga " + (i) + ": " + vagas[i] + " ###\n";
         return s + "\n";
     }
 }
