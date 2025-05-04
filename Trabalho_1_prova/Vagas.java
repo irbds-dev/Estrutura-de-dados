@@ -17,17 +17,13 @@ public class Vagas {
     }
 
     // Adiciona carros no estacionamento
-    public void setVagas(String placa){
-        if(estaCheio()) {
-            System.out.println("Não existe vaga para esse carro");
-        }
-        else{
-            if(encontraPlaca(placa) != -1){
-                System.out.println("\n\n### O carro já está estacionado ###\n\n");
-            }else{
-                this.vagas[this.ocupacao++] = placa;
-                System.out.println("\n\n### Carro de placa: " + placa + " estacionado na vaga: " + (ocupacao-1) + " ###\n\n");
-            }
+    public boolean setVagas(String placa){
+        if(encontraPlaca(placa) != -1){
+            System.out.println("\n\n### O carro já está estacionado ###\n\n");
+            return false;
+        }else{
+            this.vagas[this.ocupacao++] = placa;
+            return true;
         }
     }
 
@@ -35,9 +31,8 @@ public class Vagas {
     public void removeCarro(String placa){
         int numVaga = encontraPlaca(placa);
         if(numVaga == -1){
-            System.out.println("Seu carro está estacionado em outro lugar, senhor");
+            System.out.println("\n\n### Seu carro está estacionado em outro lugar, senhor ### \n\n");
         }else {
-            System.out.println("NUMERO DA VAGA QUE O CARRO ESTÁ: " + numVaga);
             Vagas auxVagas = manobraCarro(numVaga);
             estacionaRemovidos(auxVagas, placa);
         }
@@ -60,7 +55,7 @@ public class Vagas {
             setVagas(auxVagas.vagasPop());
             contaManobras++;
         }
-        System.out.println("Carro placa: " + placa + " saiu com " + contaManobras + " manobra(s) realizada(s)");
+        System.out.println("\n\n### Carro placa: " + placa + " saiu com " + contaManobras + " manobra(s) realizada(s) ###\n\n");
         contaManobras = 0;
     }
 
@@ -90,7 +85,7 @@ public class Vagas {
     public String toString(){
         String s = "\nNumero de vagas ocupadas = " + ocupacao + "\n\n";
         for (int i = 0; i < ocupacao; i++)
-            s += "### placa do carro na vaga " + (i) + ": " + vagas[i] + " ###\n";
+            s += "### placa do carro na vaga " + (i+1) + ": " + vagas[i] + " ###\n";
         return s + "\n";
     }
 }
